@@ -1,9 +1,9 @@
 class member():
 
-    def __init__(self):
-        self.name = ''
-        self.username = ''  
-        self.password = ''  
+    def __init__(self, name, username, password):
+        self.name = name
+        self.username = username
+        self.password = password
 
     def display(self):
         print(self.name, self.username)
@@ -15,22 +15,14 @@ class post():
         self.content = content
         self.author = author 
 
-m1 = member() 
-m1.name = '김아무개'
-m1.username = 'kim'
-m1.password = '123'
+m1 = member('김아무개', 'kim', '123') 
 
-m2 = member() 
-m2.name = '박아무개'
-m2.username = 'park'
-m2.password = '1234'
+m2 = member('박아무개', 'park', '1234') 
 
-m3 = member() 
-m3.name = '최아무개'
-m3.username = 'choi'
-m3.password = '12345'
+m3 = member('최아무개', 'choi', '12345') 
 
 members = []
+
 posts = []
 
 members.append(m1)
@@ -56,4 +48,6 @@ for element in posts:
     if element.author == '김아무개':
         print(element.title)
 
-# sadasdasdsdasd
+for element in posts:
+    if '박' in element.content:
+        print(element.title)
