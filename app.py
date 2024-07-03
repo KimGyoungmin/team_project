@@ -1,4 +1,4 @@
-    """
+"""
     **과제 내용:**##
 
 1. **`Member`** 클래스와 **`Post`** 클래스를 정의하세요.
@@ -20,7 +20,7 @@
     """
 
 # ----- 코드 정의 ------
-class Member: 1112a
+class Member:
     # TODO : 코드 구현이 필요합니다.
 
     def display(self):
