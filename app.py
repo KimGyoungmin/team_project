@@ -34,6 +34,9 @@
  """
 
 
+
+
+import hashlib
 class Member:
     def __init__(self, name, username, password):
         self.name = name
@@ -63,7 +66,7 @@ def main():
     while True:
         print("")
         print("_________메뉴__________")
-        print("1. 멤버추가\n2.멤버 이름 출력\n3.포스트 추가  \n4.멤버가 작성한 게시글 제목 출력 \n5.특정 단어 입력하면 게시글 제목과 주인 출력\n")
+        print("1.멤버추가\n2.멤버 이름 출력\n3.포스트 추가 (로그인 해야함) \n4.멤버가 작성한 게시글 제목 출력 \n5.특정 단어 입력하면 게시글 제목과 주인 출력\n")
         num = int(input("숫자를 입력하시오  :"))
         print("")
         if num == 1:
@@ -80,11 +83,18 @@ def main():
             print("1~5까지만 입력하시오")
 
 
+def hash_password(password):
+    # 비밀번호를 해싱합니다.
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+    return hashed_password
+
+
 def add_mem(members):
     name = input("유저 이름을 입력하세요: ")
     id = input("아이디를 입력하세요: ")
-    password = input("비밀번호를 입력하세요: ")
-    member = Member(name, id, password)
+    unhassed_password = input("비밀번호를 입력하세요: ")
+    hashed_password = hash_password(unhassed_password)
+    member = Member(name, id, hashed_password)
     members.append(member)
 
 
@@ -93,6 +103,24 @@ def print_mem(members):
     print("_________멤버목록___________")   # 멤버이름 출력
     for i in members:
         print(i.name)
+
+
+def login(members, login_name):
+
+    id = input("아이디를 입력하세요")
+    unhassed_password = input("비밀번호를 입력하세요: ")
+    hashed_password = hash_password(unhassed_password)
+
+    for i in members:
+
+        if i.name == login_name:  # 로그인 이름과 같은 이름값을 가진 객체찾기
+            if i.username == id and i.password == hashed_password:  # 아이디와 비밀번호가 맞을떄
+
+                return True
+            else:
+                print(" 아이디나 비밀번호가 틀렸습니다!! ")
+
+                return False
 
 
 def write_post(members, posts):
@@ -112,7 +140,11 @@ def write_post(members, posts):
                 continue
 
             else:  # 같은 이름이있을때  =>>해당 회원의 포스트를 입력
-                title = input("제목을 입력하세요: ")
+
+                if not login(members, members_name):  # 로그인 False 값 반환했을때 매뉴로 돌아감
+                    break
+
+                title = input("\n제목을 입력하세요: ")
                 content = input("내용을 입력하세요: ")
                 post = Post(title, content, members_name)
                 posts.append(post)
