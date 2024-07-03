@@ -25,6 +25,7 @@ for member in members:
 
 
 
+
 # class Post:
 #     # TODO : 코드 구현이 필요합니다.
 #     pass
