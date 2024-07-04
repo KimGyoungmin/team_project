@@ -6,7 +6,8 @@ class Member:
 
     def display(self):
         print(f"회원 이름: {self.name},아이디:{self.username}")
-        
+
+
 
 class Post(Member):
     def __init__(self, name , username , password , title , content):
@@ -23,6 +24,13 @@ m1 = Member(name="John", username="John", password="<PASSWORD>")
 m2 = Member(name="Jm", username="Jm", password="<PASSWORD>")
 m3 = Member(name="je", username="je", password="<PASSWORD>")
 
+m4_name = input('이름을 입력하세요.')
+m4_username = input('닉네임을 입력하세요.')
+m4_password = input('비밀번호를 입력하세요.')
+
+m4 = Member(m4_name, m4_username, m4_password)
+
+
 
 m1_post_1 = Post("John", "John", "<PASSWORD>", "첫 번째 글", "이것은 첫 번째 게시물입니다.")
 m1_post_2 = Post("John", "John", "<PASSWORD>", "첫 번째 글", "이것은 두 번째 게시물입니다.")
@@ -36,13 +44,19 @@ m3_post_1 = Post("je", "je", "<PASSWORD>", "첫 번째 글", "이것은 첫 번�
 m3_post_2 = Post("je", "je", "<PASSWORD>", "첫 번째 글", "이것은 두 번째 게시물입니다.")
 m3_post_3 = Post("je", "je", "<PASSWORD>", "첫 번째 글", "이것은 세 번째 게시물입니다.")
 
+
+
+m4_title_1 = input('제목을 입력하세요.')
+m4_content_1 = input('내용을 입력하세요.')
+
+m4_post_1 = Post(m4_name, m4_username , m4_password, m4_title_1, m4_content_1)
+
 members = []
 
 members.append(m1)
 members.append(m2)
 members.append(m3)
-
-
+members.append(m4)
 
 
 posts = []
@@ -55,6 +69,7 @@ posts.append(m2_post_3)
 posts.append(m3_post_1)
 posts.append(m3_post_2)
 posts.append(m3_post_3)
+posts.append(m4_post_1)
 
 
 for member in members:
