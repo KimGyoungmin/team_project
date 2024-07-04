@@ -1,12 +1,12 @@
 
 import hashlib
 
-
 class Member:
     def __init__(self, name, userid, password):
         self.name = name
         self.userid = userid
         self.password = password
+
 
     def display(self):
         print(f"멤버 이름: {self.name}")
