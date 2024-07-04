@@ -1,8 +1,16 @@
+import hashlib
+
+
 class Member:
     def __init__(self, name,username,password):
         self.name = name
         self.username = username
         self.password = password
+
+    def hash_pw(password):
+        hashed_pw = hashlib.SHA-256(password.endode()).hexdigest()
+        return (hashed_pw)
+
 
     def display(self):
         print(f"회원 이름: {self.name},아이디:{self.username}")
@@ -78,3 +86,5 @@ for member in members:
     for post in posts:
         if post.author == member.username:
             post.posts()
+
+            
