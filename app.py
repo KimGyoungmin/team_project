@@ -128,6 +128,7 @@ class Post():
 
 member_chk = Member()
 post_chk = Post()
+
 # member_chk.create_member('파이썬', 'python', '1234')
 # member_chk.create_member('자바', 'java', '1234')
 
@@ -156,6 +157,7 @@ result
 '순번:5 제목:두번째 글 작성자:java 내용:반갑습니다!'
 
 """
+
 post_exit = True
 while post_exit:
     print("""------원하는 프로그램실행 번호를 입력하세요------
